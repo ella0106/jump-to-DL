@@ -1,6 +1,5 @@
-import numpy as np
-import unittest
 import weakref
+import numpy as np
 import contextlib
 
 class Variable:
