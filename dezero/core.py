@@ -113,7 +113,7 @@ def as_array(x):
     return x
 
 def as_variable(obj):
-    if isinstance(obj, Variable): 
+    if isinstance(obj, Variable):
         return obj
     return Variable(obj)
 
