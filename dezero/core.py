@@ -112,7 +112,7 @@ def as_array(x):
         return np.array(x)
     return x
 
-def as_variable(obj):
+def as_variable(obj): 
     if isinstance(obj, Variable):
         return obj
     return Variable(obj)
