@@ -104,7 +104,7 @@ class Variable:
     def T(self):
         return dezero.functions.transpose(self)
     
-    def sum(x, axis=None, keepdims=False):
+    def sum(self, axis=None, keepdims=False):
         return dezero.functions.sum(self, axis, keepdims)
 
 def as_array(x):
