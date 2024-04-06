@@ -16,9 +16,9 @@ W1, b1 = Variable(0.01 * np.random.randn(I, H)), Variable(np.zeros(H))
 W2, b2 = Variable(0.01 * np.random.randn(H, O)), Variable(np.zeros(O))
 
 def predict(x):
-    y = F.linear_simple(x, W1, b1)
+    y = F.linear(x, W1, b1)
     y = F.sigmoid_simple(y)
-    y = F.linear_simple(y, W2, b2)
+    y = F.linear(y, W2, b2)
     return y
 
 def mean_squared_error(x0, x1):
