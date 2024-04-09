@@ -8,7 +8,7 @@ class Layer:
         self._params = set()
 
     def __setattr__(self, name: str, value) -> None:
-        if isinstance(value, Parameter):
+        if isinstance(value, (Parameter, Layer)):
             self._params.add(name)
 
         super().__setattr__(name, value)
@@ -26,9 +26,13 @@ class Layer:
     
     def params(self):
         for name in self._params:
-            yield self.__dict__[name]
+            obj = self.__dict__[name]
             # yield 는 return과 같지만, 처리를 종료하고 값을 반환하는 것이 아니라 작업을 중단하다가 재개함
             # 그래서 아래 cleargrads에서 self.params()를 호출 할 때 다시 재개하여 처음부터 불러오는 것이 아닌 순차적으로 반환이 가능하다는 것이다
+            if isinstance(obj, Layer):
+                yield from obj.params()
+            else:
+                yield obj
 
     def cleargrads(self):
         for param in self.params():
