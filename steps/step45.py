@@ -20,7 +20,7 @@ class TwoLayerNet(Model):
     def __init__(self, hidden_size, out_size):
         super().__init__()
         self.l1 = L.Linear(hidden_size)
-        self.l2 = L.Linear(out_size)
+        self.l2 = L.Linear(out_size)                                                                                         
 
     def forward(self, x):
         y = F.sigmoid(self.l1(x))
